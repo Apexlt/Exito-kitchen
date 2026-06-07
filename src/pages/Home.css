@@ -1,20 +1,6 @@
 .home-page {
-  padding: 10px;
+  padding: 12px;
   overflow-x: hidden;
-}
-
-/* GRID */
-.food-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-}
-
-/* DESKTOP */
-@media (min-width: 768px) {
-  .food-grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  }
 }
 
 /* INFO BANNER */
@@ -27,13 +13,11 @@
 }
 
 /* SEARCH */
-/* WRAPPER */
 .search-wrapper {
   position: relative;
   margin: 12px 0 18px 0;
 }
 
-/* INPUT */
 .search-modern {
   width: 100%;
   padding: 12px 40px 12px 15px;
@@ -43,16 +27,13 @@
   background: #f2f2f2;
   color: #111;
   font-size: 14px;
-  transition: 0.2s ease;
 }
 
-/* FOCUS */
 .search-modern:focus {
   background: #fff;
   box-shadow: 0 0 0 2px rgba(0,0,0,0.08);
 }
 
-/* CLEAR BUTTON */
 .clear-modern {
   position: absolute;
   right: 10px;
@@ -65,23 +46,23 @@
   color: #888;
 }
 
-.clear-modern:hover {
-  color: #000;
-}
-/* TABS */
+/* 🔥 CATEGORY TABS (FIXED MOBILE) */
 .menu-tabs {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   margin: 15px 0;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .menu-tabs button {
-  padding: 8px 12px;
+  padding: 10px 14px;
   border: none;
   background: #222;
   color: white;
-  border-radius: 6px;
+  border-radius: 20px;
+  font-size: 13px;
+  white-space: nowrap;
 }
 
 .menu-tabs button.active {
@@ -89,7 +70,38 @@
   color: black;
 }
 
-/* CATERING PREMIUM */
+/* 🔥 FOOD GRID (FIXED MOBILE BALANCE) */
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+/* DESKTOP */
+@media (min-width: 768px) {
+  .food-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+  }
+}
+
+/* SMALL MOBILE FIX */
+@media (max-width: 480px) {
+  .menu-tabs {
+    gap: 6px;
+  }
+
+  .menu-tabs button {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  .food-grid {
+    gap: 8px;
+  }
+}
+
+/* CATERING */
 .catering-premium {
   margin-top: 20px;
   padding: 18px;
@@ -98,13 +110,8 @@
   border-radius: 14px;
 }
 
-/* HERO */
 .catering-hero {
   text-align: center;
-}
-
-.catering-hero h2 {
-  margin-bottom: 8px;
 }
 
 .catering-hero p {
@@ -112,20 +119,16 @@
   opacity: 0.8;
 }
 
-/* VALUE */
 .catering-value {
   text-align: center;
   font-size: 12px;
   margin: 10px 0;
-  opacity: 0.9;
 }
 
-/* SERVICES */
 .catering-services {
   display: grid;
   grid-template-columns: 1fr;
   gap: 10px;
-  margin-top: 10px;
 }
 
 .service-card {
@@ -138,7 +141,6 @@
   font-size: 18px;
 }
 
-/* PRICING */
 .pricing-title {
   text-align: center;
   margin: 15px 0 10px;
@@ -165,7 +167,6 @@
   border: 1px solid orange;
 }
 
-/* BUTTON */
 .catering-cta {
   margin-top: 15px;
   width: 100%;
@@ -176,7 +177,7 @@
   font-weight: bold;
 }
 
-/* DESKTOP */
+/* DESKTOP CATERING */
 @media (min-width: 768px) {
   .catering-services {
     grid-template-columns: repeat(3, 1fr);
