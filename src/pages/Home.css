@@ -75,23 +75,26 @@ html, body {
   color: black;
 }
 
-/* FOOD GRID FIX */
+/* =========================
+   🍽️ FOOD GRID FIXED
+========================= */
+
 .food-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
-}
-
-.food-grid > * {
+  align-items: stretch;
   width: 100%;
 }
 
-@media (max-width: 380px) {
+/* ONLY ultra-small phones go single column */
+@media (max-width: 300px) {
   .food-grid {
     grid-template-columns: 1fr;
   }
 }
 
+/* Desktop */
 @media (min-width: 768px) {
   .food-grid {
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -221,7 +224,7 @@ html, body {
   border: 1px solid orange;
 }
 
-/* MOBILE */
+/* MOBILE PRICING STACK */
 @media (max-width: 480px) {
   .catering-alt-pricing {
     grid-template-columns: 1fr;
