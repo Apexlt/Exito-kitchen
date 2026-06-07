@@ -10,6 +10,7 @@ function Profile() {
 
   const [message, setMessage] = useState("");
   const [sending, setSending] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   /* ================= PROTECT ================= */
   useEffect(() => {
@@ -67,8 +68,12 @@ function Profile() {
         return;
       }
 
-      alert("Feedback sent ✅");
+      setShowSuccess(true);
       setMessage("");
+
+      setTimeout(() => {
+        setShowSuccess(false);
+      }, 2500);
     } catch {
       alert("Network error");
     } finally {
@@ -78,6 +83,7 @@ function Profile() {
 
   return (
     <div style={styles.page}>
+      {/* HEADER */}
       <div style={styles.header}>
         <div>
           <h1 style={{ margin: 0 }}>My Profile</h1>
@@ -90,7 +96,8 @@ function Profile() {
       </div>
 
       <div style={styles.grid}>
-        <div style={styles.card}>
+        {/* FEEDBACK */}
+        <div style={{ ...styles.card, height: "fit-content" }}>
           <h2>Send Feedback</h2>
 
           <textarea
@@ -109,7 +116,14 @@ function Profile() {
           </button>
         </div>
 
-        <div style={styles.card}>
+        {/* ORDERS */}
+        <div
+          style={{
+            ...styles.card,
+            maxHeight: "70vh",
+            overflowY: "auto",
+          }}
+        >
           <h2>Order History</h2>
 
           {isLoading ? (
@@ -143,6 +157,16 @@ function Profile() {
           )}
         </div>
       </div>
+
+      {/* SUCCESS POPUP */}
+      {showSuccess && (
+        <div style={styles.popup}>
+          <div style={styles.popupBox}>
+            <h3>✅ Feedback Sent</h3>
+            <p>Thanks for your input!</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -169,6 +193,7 @@ const styles = {
     display: "grid",
     gridTemplateColumns: "1fr 2fr",
     gap: 20,
+    alignItems: "start", // 🔥 prevents stretching
   },
 
   card: {
@@ -227,8 +252,27 @@ const styles = {
     fontSize: 13,
     padding: "4px 0",
   },
+
+  /* POPUP */
+  popup: {
+    position: "fixed",
+    inset: 0,
+    background: "rgba(0,0,0,0.4)",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 9999,
+  },
+
+  popupBox: {
+    background: "#fff",
+    padding: "20px 30px",
+    borderRadius: 12,
+    textAlign: "center",
+  },
 };
 
+/* STATUS COLOR */
 const statusStyle = (status) => ({
   padding: "3px 8px",
   borderRadius: 6,
