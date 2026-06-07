@@ -10,6 +10,8 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+const BASE_URL = "https://exito-kitchen.onrender.com";
+
 function AdminDashboard() {
   const [orders, setOrders] = useState([]);
   const [users, setUsers] = useState([]);
@@ -41,13 +43,13 @@ function AdminDashboard() {
 
     try {
       const [ordersRes, usersRes, feedbackRes] = await Promise.all([
-        fetch("http://localhost:5000/admin/orders", {
+        fetch(`${BASE_URL}/admin/orders`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
-        fetch("http://localhost:5000/admin/users", {
+        fetch(`${BASE_URL}/admin/users`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
-        fetch("http://localhost:5000/admin/feedback", {
+        fetch(`${BASE_URL}/admin/feedback`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
       ]);
@@ -72,12 +74,16 @@ function AdminDashboard() {
   }, [loadData]);
 
   const deleteOrder = async (id) => {
-    await fetch(`http://localhost:5000/admin/orders/${id}`, {
-      method: "DELETE",
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    try {
+      await fetch(`${BASE_URL}/admin/orders/${id}`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` },
+      });
 
-    setOrders((prev) => prev.filter((o) => o._id !== id));
+      setOrders((prev) => prev.filter((o) => o._id !== id));
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const confirmRefund = async () => {
@@ -87,7 +93,7 @@ function AdminDashboard() {
 
     try {
       const res = await fetch(
-        `http://localhost:5000/admin/orders/${selectedOrder._id}/refund`,
+        `${BASE_URL}/admin/orders/${selectedOrder._id}/refund`,
         {
           method: "PUT",
           headers: {
@@ -100,7 +106,7 @@ function AdminDashboard() {
         }
       );
 
-      const data = await res.json();
+      const data = await res.json().catch(() => ({}));
 
       if (!res.ok) {
         alert(data.message || "Refund failed");
@@ -116,7 +122,8 @@ function AdminDashboard() {
       setShowRefund(false);
       setSelectedOrder(null);
       setRefundReason("");
-    } catch {
+    } catch (err) {
+      console.error(err);
       alert("Network error");
     } finally {
       setRefundLoadingId(null);
@@ -222,7 +229,6 @@ function AdminDashboard() {
   return (
     <div style={styles.container}>
 
-      {/* HANDLE BUTTON */}
       <button
         onClick={() => setSidebarOpen((prev) => !prev)}
         style={{
@@ -236,13 +242,11 @@ function AdminDashboard() {
           padding: "8px 10px",
           borderRadius: 6,
           cursor: "pointer",
-          transition: "0.3s",
         }}
       >
         ☰
       </button>
 
-      {/* SIDEBAR */}
       <div
         style={{
           ...styles.sidebar,
@@ -270,13 +274,7 @@ function AdminDashboard() {
         </button>
       </div>
 
-      {/* MAIN */}
-      <div
-        style={{
-          ...styles.main,
-          marginLeft: sidebarOpen ? 220 : 0,
-        }}
-      >
+      <div style={{ ...styles.main, marginLeft: sidebarOpen ? 220 : 0 }}>
         {view === "dashboard" && (
           <>
             <div style={styles.stats}>
@@ -315,7 +313,6 @@ function AdminDashboard() {
         {view === "feedback" && renderFeedback()}
       </div>
 
-      {/* MODALS */}
       {showLogout && (
         <div style={styles.modal}>
           <div style={styles.box}>
