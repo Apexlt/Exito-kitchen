@@ -1,0 +1,188 @@
+.home-page {
+  padding: 10px;
+  overflow-x: hidden;
+}
+
+/* GRID */
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+/* DESKTOP */
+@media (min-width: 768px) {
+  .food-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+/* INFO BANNER */
+.info-banner {
+  background: linear-gradient(135deg, #111, #222);
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 15px 0;
+}
+
+/* SEARCH */
+/* WRAPPER */
+.search-wrapper {
+  position: relative;
+  margin: 12px 0 18px 0;
+}
+
+/* INPUT */
+.search-modern {
+  width: 100%;
+  padding: 12px 40px 12px 15px;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  background: #f2f2f2;
+  color: #111;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+/* FOCUS */
+.search-modern:focus {
+  background: #fff;
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.08);
+}
+
+/* CLEAR BUTTON */
+.clear-modern {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  font-size: 18px;
+  cursor: pointer;
+  color: #888;
+}
+
+.clear-modern:hover {
+  color: #000;
+}
+/* TABS */
+.menu-tabs {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+  flex-wrap: wrap;
+}
+
+.menu-tabs button {
+  padding: 8px 12px;
+  border: none;
+  background: #222;
+  color: white;
+  border-radius: 6px;
+}
+
+.menu-tabs button.active {
+  background: orange;
+  color: black;
+}
+
+/* CATERING PREMIUM */
+.catering-premium {
+  margin-top: 20px;
+  padding: 18px;
+  background: #0b0b0f;
+  color: white;
+  border-radius: 14px;
+}
+
+/* HERO */
+.catering-hero {
+  text-align: center;
+}
+
+.catering-hero h2 {
+  margin-bottom: 8px;
+}
+
+.catering-hero p {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+/* VALUE */
+.catering-value {
+  text-align: center;
+  font-size: 12px;
+  margin: 10px 0;
+  opacity: 0.9;
+}
+
+/* SERVICES */
+.catering-services {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.service-card {
+  background: #15151b;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.service-card .icon {
+  font-size: 18px;
+}
+
+/* PRICING */
+.pricing-title {
+  text-align: center;
+  margin: 15px 0 10px;
+}
+
+.catering-pricing {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.price-card {
+  background: #15151b;
+  padding: 12px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.price-card h3 {
+  color: orange;
+}
+
+.price-card.featured {
+  border: 1px solid orange;
+}
+
+/* BUTTON */
+.catering-cta {
+  margin-top: 15px;
+  width: 100%;
+  padding: 12px;
+  background: orange;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+/* DESKTOP */
+@media (min-width: 768px) {
+  .catering-services {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .catering-pricing {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
