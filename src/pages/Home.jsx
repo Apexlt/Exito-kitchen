@@ -36,7 +36,7 @@ function Home() {
       </div>
 
       {/* SEARCH */}
-     <div className="search-wrapper">
+      <div className="search-wrapper">
         <input
           type="text"
           placeholder="Search for meals..."
@@ -46,14 +46,12 @@ function Home() {
         />
 
         {search && (
-          <button
-            className="clear-modern"
-            onClick={() => setSearch("")}
-          >
+          <button className="clear-modern" onClick={() => setSearch("")}>
             ×
           </button>
         )}
       </div>
+
       {/* CATEGORY TABS */}
       <div className="menu-tabs">
         <button
@@ -83,11 +81,7 @@ function Home() {
         <div className="food-grid">
           {filteredFood.length > 0 ? (
             filteredFood.map((food) => (
-              <FoodCard
-                key={food.id}
-                food={food}
-                addToCart={addToCart}
-              />
+              <FoodCard key={food.id} food={food} addToCart={addToCart} />
             ))
           ) : (
             <p style={{ color: "#999" }}>No food found 😢</p>
@@ -95,74 +89,69 @@ function Home() {
         </div>
       )}
 
-      {/* PREMIUM CATERING SECTION */}
+      {/* 🔥 NEW CATERING SECTION */}
       {category === "events" && (
-        <div className="catering-premium">
+        <div className="catering-alt">
 
-          <div className="catering-hero">
-            <h2>🍽️ Luxury Catering & Private Chef Services</h2>
-            <p>
-              Restaurant-quality meals, professional chefs, and full event catering
-              delivered to your location.
-            </p>
+          {/* HERO */}
+          <div className="catering-banner">
+            <div className="overlay">
+              <h2>Luxury Catering Experience</h2>
+              <p>Private chefs • Events • Bulk cooking</p>
+            </div>
           </div>
 
-          <div className="catering-value">
-            ⭐ 100+ Events • 👨‍🍳 Expert Chefs • 🚚 On-site Service
+          {/* STATS */}
+          <div className="catering-stats">
+            <div><strong>100+</strong><span>Events</span></div>
+            <div><strong>1000+</strong><span>Chefs</span></div>
+            <div><strong>24/7</strong><span>Service</span></div>
           </div>
 
-          <div className="catering-services">
+          {/* SERVICES */}
+          <div className="catering-scroll">
 
-            <div className="service-card">
-              <div className="icon">👨‍🍳</div>
-              <h3>Private Chef</h3>
-              <p>Chef cooks fresh meals at your home</p>
+            <div className="scroll-card">
+              <h3>👨‍🍳 Private Chef</h3>
+              <p>Live cooking at your home with custom menus</p>
+              <button onClick={() => navigate("/contact")}>Book</button>
             </div>
 
-            <div className="service-card">
-              <div className="icon">🎉</div>
-              <h3>Event Catering</h3>
+            <div className="scroll-card">
+              <h3>🎉 Event Catering</h3>
               <p>Weddings, birthdays & corporate events</p>
-            </div>
-
-            <div className="service-card">
-              <div className="icon">🚚</div>
-              <h3>Bulk Food</h3>
-              <p>Large orders for parties & gatherings</p>
+              <button onClick={() => navigate("/contact")}>Book</button>
             </div>
 
           </div>
 
-          <div className="pricing-title">💰 Pricing</div>
+          {/* PRICING */}
+          <div className="catering-alt-pricing">
 
-          <div className="catering-pricing">
-
-            <div className="price-card">
-              <h4>Small Events</h4>
-              <p>Home gatherings</p>
-              <h3>₦100,000+</h3>
+            <div className="alt-price">
+              <h4>Starter</h4>
+              <p>Small gatherings</p>
+              <h2>₦100k+</h2>
             </div>
 
-            <div className="price-card featured">
-              <h4>Medium Events</h4>
-              <p>Parties & celebrations</p>
-              <h3>₦150,000+</h3>
+            <div className="alt-price highlight">
+              <h4>Standard</h4>
+              <p>Parties & events</p>
+              <h2>₦150k+</h2>
             </div>
 
-            <div className="price-card">
-              <h4>Luxury Events</h4>
-              <p>Weddings & corporate</p>
-              <h3>Custom</h3>
+            <div className="alt-price">
+              <h4>Premium</h4>
+              <p>Luxury weddings</p>
+              <h2>Custom</h2>
             </div>
 
           </div>
 
-          <button
-            className="catering-cta"
-            onClick={() => navigate("/contact")}
-          >
-          📲 Book Catering Now
-      </button>
+          {/* CTA */}
+          <button className="alt-cta" onClick={() => navigate("/contact")}>
+            Book Catering Now 🚀
+          </button>
 
         </div>
       )}
