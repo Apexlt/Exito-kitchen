@@ -15,13 +15,21 @@ function Cart() {
   const navigate = useNavigate();
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div
+      style={{
+        padding: "20px",
+        maxWidth: "100vw",
+        minHeight: "100vh",
+        boxSizing: "border-box",
+        overflowX: "hidden",
+        background: "#fff",
+      }}
+    >
       <h1>Your Cart 🛒</h1>
 
       {cart.length === 0 ? (
         <div style={{ textAlign: "center", marginTop: "50px" }}>
           <h2>Your cart is empty 🛒</h2>
-
           <p>Add some delicious meals to get started 🍽</p>
 
           <button
@@ -48,46 +56,36 @@ function Cart() {
                 marginBottom: "15px",
                 borderBottom: "1px solid #ddd",
                 paddingBottom: "10px",
+                wordBreak: "break-word",
               }}
             >
               <h3>{item.name}</h3>
               <p>₦{item.price}</p>
 
-              {/* 🔥 IN-HOUSE LABEL */}
               {item.inHouse && (
                 <p style={{ color: "green" }}>
                   🍽 In-House Cooking
                 </p>
               )}
 
-              {/* QTY CONTROLS */}
-              <div>
+              <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
                 <button
-                  onClick={() =>
-                    decreaseQty(item.id, item.inHouse)
-                  }
+                  onClick={() => decreaseQty(item.id, item.inHouse)}
                 >
                   -
                 </button>
 
-                <span style={{ margin: "0 10px" }}>
-                  {item.quantity}
-                </span>
+                <span>{item.quantity}</span>
 
                 <button
-                  onClick={() =>
-                    increaseQty(item.id, item.inHouse)
-                  }
+                  onClick={() => increaseQty(item.id, item.inHouse)}
                 >
                   +
                 </button>
               </div>
 
-              {/* REMOVE */}
               <button
-                onClick={() =>
-                  removeFromCart(item.id, item.inHouse)
-                }
+                onClick={() => removeFromCart(item.id, item.inHouse)}
               >
                 Remove
               </button>
@@ -96,7 +94,7 @@ function Cart() {
 
           <h2>Total: ₦{cartTotal}</h2>
 
-          <div style={{ display: "flex", gap: "10px" }}>
+          <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
             <button onClick={() => navigate("/checkout")}>
               Proceed to Checkout
             </button>
