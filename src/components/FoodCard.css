@@ -16,10 +16,11 @@
   width: 100%;
   height: 120px;
   object-fit: cover;
-  display: block; /* 🔥 IMPORTANT FIX */
+  display: block;
   border-radius: 8px;
 }
 
+/* ONLY spacing fix */
 .food-info {
   margin-top: 8px;
 }
@@ -34,6 +35,7 @@
   margin-bottom: 5px;
 }
 
+/* keep your original toggle exactly */
 .toggle {
   font-size: 12px;
   display: flex;
@@ -42,6 +44,7 @@
   margin-bottom: 8px;
 }
 
+/* button unchanged */
 .food-card button {
   width: 100%;
   padding: 6px;
