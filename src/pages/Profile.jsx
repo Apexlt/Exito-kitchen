@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
+const BASE_URL = "https://exito-kitchen.onrender.com";
+
 function Profile() {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
@@ -21,7 +23,7 @@ function Profile() {
     queryKey: ["orders"],
     enabled: !!token,
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/user/orders", {
+      const res = await fetch(`${BASE_URL}/user/orders`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -49,7 +51,7 @@ function Profile() {
     setSending(true);
 
     try {
-      const res = await fetch("http://localhost:5000/feedback", {
+      const res = await fetch(`${BASE_URL}/feedback`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -76,7 +78,6 @@ function Profile() {
 
   return (
     <div style={styles.page}>
-      {/* HEADER */}
       <div style={styles.header}>
         <div>
           <h1 style={{ margin: 0 }}>My Profile</h1>
@@ -89,7 +90,6 @@ function Profile() {
       </div>
 
       <div style={styles.grid}>
-        {/* LEFT: FEEDBACK */}
         <div style={styles.card}>
           <h2>Send Feedback</h2>
 
@@ -109,21 +109,11 @@ function Profile() {
           </button>
         </div>
 
-        {/* RIGHT: ORDERS */}
         <div style={styles.card}>
           <h2>Order History</h2>
 
-          {/* 🔥 SKELETON LOADING */}
           {isLoading ? (
-            <div>
-              {[1, 2, 3].map((n) => (
-                <div key={n} style={styles.skeletonCard}>
-                  <div style={styles.skeletonLine} />
-                  <div style={styles.skeletonLineSmall} />
-                  <div style={styles.skeletonLine} />
-                </div>
-              ))}
-            </div>
+            <p>Loading...</p>
           ) : orders.length === 0 ? (
             <p>No orders yet</p>
           ) : (
@@ -237,37 +227,8 @@ const styles = {
     fontSize: 13,
     padding: "4px 0",
   },
-
-  /* ================= SKELETON ================= */
-  skeletonCard: {
-    marginTop: 12,
-    padding: 12,
-    borderRadius: 10,
-    background: "#eee",
-    overflow: "hidden",
-    position: "relative",
-  },
-
-  skeletonLine: {
-    height: 12,
-    background: "#ddd",
-    borderRadius: 6,
-    marginBottom: 8,
-    width: "80%",
-    position: "relative",
-    overflow: "hidden",
-  },
-
-  skeletonLineSmall: {
-    height: 10,
-    background: "#e2e2e2",
-    borderRadius: 6,
-    marginBottom: 8,
-    width: "50%",
-  },
 };
 
-/* STATUS COLOR */
 const statusStyle = (status) => ({
   padding: "3px 8px",
   borderRadius: 6,
