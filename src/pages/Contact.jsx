@@ -18,7 +18,7 @@ function Contact() {
       </div>
 
       <div style={styles.grid}>
-        {/* LEFT: CONTACT OPTIONS */}
+        {/* LEFT */}
         <div style={styles.card}>
           <h2>Reach Us</h2>
 
@@ -53,7 +53,7 @@ function Contact() {
           </div>
         </div>
 
-        {/* RIGHT: LOCATION */}
+        {/* RIGHT */}
         <div style={styles.card}>
           <h2 style={{ display: "flex", alignItems: "center", gap: 10 }}>
             <FaMapMarkerAlt /> Our Location
@@ -74,7 +74,7 @@ function Contact() {
             height="260"
             style={styles.map}
             loading="lazy"
-            title="Lagos Mainland Map"
+            title="Location Map"
           ></iframe>
         </div>
       </div>
@@ -88,24 +88,25 @@ export default Contact;
 
 const styles = {
   page: {
-    padding: "30px",
+    padding: "20px",
     background: "#f4f6f9",
     minHeight: "100vh",
   },
 
   header: {
-    marginBottom: 25,
+    marginBottom: 20,
   },
 
+  /* ✅ FIXED RESPONSIVE GRID */
   grid: {
     display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    gap: 20,
+    gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+    gap: 16,
   },
 
   card: {
     background: "#fff",
-    padding: 20,
+    padding: 16,
     borderRadius: 12,
     boxShadow: "0 6px 20px rgba(0,0,0,0.05)",
   },
@@ -113,7 +114,7 @@ const styles = {
   list: {
     display: "flex",
     flexDirection: "column",
-    gap: 12,
+    gap: 10,
     marginTop: 10,
   },
 
@@ -121,43 +122,46 @@ const styles = {
     display: "flex",
     alignItems: "center",
     gap: 10,
-    padding: "12px",
+    padding: "10px",
     borderRadius: 8,
     background: "#f9fafb",
     textDecoration: "none",
     color: "#111",
     fontWeight: 500,
+    fontSize: "14px",
   },
 
   socials: {
     display: "flex",
     gap: 10,
     marginTop: 10,
+    flexWrap: "wrap",
   },
 
   socialBtn: {
-    width: 45,
-    height: 45,
+    width: 42,
+    height: 42,
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 10,
     background: "#111827",
     color: "#fff",
-    fontSize: 18,
+    fontSize: 16,
     textDecoration: "none",
   },
 
   mapBtn: {
     display: "inline-block",
     marginTop: 10,
-    marginBottom: 15,
-    padding: "10px 14px",
+    marginBottom: 12,
+    padding: "10px 12px",
     borderRadius: 8,
     background: "#4f46e5",
     color: "#fff",
     textDecoration: "none",
     fontWeight: "bold",
+    fontSize: "13px",
   },
 
   map: {
