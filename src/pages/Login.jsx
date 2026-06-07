@@ -12,6 +12,8 @@ function Login() {
 
   /* ================= NORMAL LOGIN ================= */
   const handleLogin = async () => {
+    if (loading) return;
+
     setError("");
 
     if (!email || !password) {
@@ -26,6 +28,7 @@ function Login() {
 
       if (!data?.success || !data?.token) {
         setError(data?.message || "Invalid email or password");
+        setLoading(false);
         return;
       }
 
@@ -37,6 +40,7 @@ function Login() {
         payload = JSON.parse(atob(data.token.split(".")[1]));
       } catch {
         localStorage.removeItem("token");
+        setLoading(false);
         return navigate("/login", { replace: true });
       }
 
@@ -47,19 +51,18 @@ function Login() {
       } else {
         navigate("/profile", { replace: true });
       }
-
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
       setError("Server error. Try again.");
     } finally {
       setLoading(false);
     }
   };
 
-  /* ================= GOOGLE LOGIN (NEW REDIRECT METHOD) ================= */
+  /* ================= GOOGLE LOGIN ================= */
   const handleGoogleLogin = () => {
-    // 🔥 Redirect to backend (NO Google script anymore)
-    window.location.href = "http://localhost:5000/auth/google";
+    window.location.href =
+      "https://exito-kitchen.onrender.com/auth/google";
   };
 
   return (
@@ -69,7 +72,12 @@ function Login() {
 
         {error && <div style={errorBox}>{error}</div>}
 
-        <form onSubmit={(e) => { e.preventDefault(); handleLogin(); }}>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleLogin();
+          }}
+        >
           <input
             placeholder="Email"
             value={email}
@@ -90,7 +98,6 @@ function Login() {
           </button>
         </form>
 
-        {/* 🔥 GOOGLE BUTTON (UPDATED LOGIC ONLY) */}
         <button onClick={handleGoogleLogin} style={btn}>
           Continue with Google
         </button>
@@ -111,7 +118,7 @@ function Login() {
 
 export default Login;
 
-/* styles (unchanged) */
+/* styles */
 const container = {
   display: "flex",
   justifyContent: "center",
