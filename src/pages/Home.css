@@ -10,16 +10,14 @@ html, body {
   background: #000;
 }
 
-/* HOME CONTAINER */
+/* HOME */
 .home-page {
   width: 100%;
   max-width: 100%;
-  margin: 0;
   padding: 6px;
-  overflow-x: hidden;
 }
 
-/* INFO BANNER */
+/* INFO */
 .info-banner {
   background: linear-gradient(135deg, #111, #222);
   color: white;
@@ -31,7 +29,7 @@ html, body {
 /* SEARCH */
 .search-wrapper {
   position: relative;
-  margin: 10px 0 14px 0;
+  margin: 10px 0 14px;
 }
 
 .search-modern {
@@ -52,16 +50,15 @@ html, body {
   border: none;
   background: transparent;
   font-size: 18px;
-  color: #888;
 }
 
 /* TABS */
 .menu-tabs {
   display: flex;
   gap: 6px;
-  margin: 12px 0;
   flex-wrap: wrap;
   justify-content: center;
+  margin: 12px 0;
 }
 
 .menu-tabs button {
@@ -71,7 +68,6 @@ html, body {
   color: white;
   border-radius: 18px;
   font-size: 12px;
-  white-space: nowrap;
 }
 
 .menu-tabs button.active {
@@ -79,40 +75,167 @@ html, body {
   color: black;
 }
 
-/* 🔥 FIXED GRID (NO OVERLAP) */
+/* FOOD GRID FIX */
 .food-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 2px;
-
-  align-items: start;      /* prevents stretching issues */
-  grid-auto-rows: auto;    /* stabilizes row height */
+  gap: 8px;
 }
 
-/* DESKTOP */
+.food-grid > * {
+  width: 100%;
+}
+
+@media (max-width: 380px) {
+  .food-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (min-width: 768px) {
-  .home-page {
-    padding: 10px;
-  }
-
   .food-grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 12px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
   }
 }
 
-/* MOBILE FIX */
-@media (max-width: 480px) {
-  .food-grid {
-    gap: 6px;
-  }
-}
+/* =========================
+   🔥 NEW CATERING DESIGN
+========================= */
 
-/* CATERING */
-.catering-premium {
+.catering-alt {
   margin-top: 20px;
-  padding: 18px;
-  background: #0b0b0f;
   color: white;
+}
+
+/* BANNER */
+.catering-banner {
+  height: 160px;
+  border-radius: 16px;
+  background: url("https://images.unsplash.com/photo-1555244162-803834f70033")
+    center/cover no-repeat;
+  overflow: hidden;
+}
+
+.catering-banner .overlay {
+  background: rgba(0,0,0,0.6);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 16px;
+}
+
+.catering-banner h2 {
+  font-size: 18px;
+}
+
+.catering-banner p {
+  font-size: 12px;
+  color: #ddd;
+}
+
+/* STATS */
+.catering-stats {
+  display: flex;
+  justify-content: space-between;
+  margin: 14px 0;
+  text-align: center;
+}
+
+.catering-stats strong {
+  display: block;
+  font-size: 16px;
+  color: orange;
+}
+
+.catering-stats span {
+  font-size: 11px;
+  color: #aaa;
+}
+
+/* SCROLL */
+.catering-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  padding-bottom: 10px;
+}
+
+.catering-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-card {
+  min-width: 180px;
+  background: #14141c;
+  padding: 14px;
   border-radius: 14px;
+}
+
+.scroll-card h3 {
+  font-size: 14px;
+}
+
+.scroll-card p {
+  font-size: 12px;
+  color: #aaa;
+  margin: 8px 0;
+}
+
+.scroll-card button {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 20px;
+  background: orange;
+  font-size: 12px;
+}
+
+/* PRICING */
+.catering-alt-pricing {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.alt-price {
+  background: #14141c;
+  padding: 12px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.alt-price p {
+  font-size: 11px;
+  color: #aaa;
+}
+
+.alt-price h2 {
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+.alt-price.highlight {
+  border: 1px solid orange;
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+  .catering-alt-pricing {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* CTA */
+.alt-cta {
+  margin-top: 18px;
+  width: 100%;
+  padding: 12px;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(to right, orange, gold);
+  color: black;
+  font-weight: bold;
 }
