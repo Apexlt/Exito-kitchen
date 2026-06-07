@@ -1,5 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+  background: #000;
+}
+
+/* HOME CONTAINER */
 .home-page {
-  padding: 12px;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 6px;
   overflow-x: hidden;
 }
 
@@ -7,31 +23,25 @@
 .info-banner {
   background: linear-gradient(135deg, #111, #222);
   color: white;
-  padding: 15px;
+  padding: 12px;
   border-radius: 10px;
-  margin: 15px 0;
+  margin: 10px 0;
 }
 
 /* SEARCH */
 .search-wrapper {
   position: relative;
-  margin: 12px 0 18px 0;
+  margin: 10px 0 14px 0;
 }
 
 .search-modern {
   width: 100%;
-  padding: 12px 40px 12px 15px;
+  padding: 11px 38px 11px 12px;
   border-radius: 30px;
   border: none;
   outline: none;
   background: #f2f2f2;
-  color: #111;
-  font-size: 14px;
-}
-
-.search-modern:focus {
-  background: #fff;
-  box-shadow: 0 0 0 2px rgba(0,0,0,0.08);
+  font-size: 13px;
 }
 
 .clear-modern {
@@ -42,26 +52,25 @@
   border: none;
   background: transparent;
   font-size: 18px;
-  cursor: pointer;
   color: #888;
 }
 
-/* 🔥 CATEGORY TABS (FIXED MOBILE) */
+/* TABS */
 .menu-tabs {
   display: flex;
-  gap: 8px;
-  margin: 15px 0;
+  gap: 6px;
+  margin: 12px 0;
   flex-wrap: wrap;
   justify-content: center;
 }
 
 .menu-tabs button {
-  padding: 10px 14px;
+  padding: 8px 10px;
   border: none;
   background: #222;
   color: white;
-  border-radius: 20px;
-  font-size: 13px;
+  border-radius: 18px;
+  font-size: 12px;
   white-space: nowrap;
 }
 
@@ -70,34 +79,32 @@
   color: black;
 }
 
-/* 🔥 FOOD GRID (FIXED MOBILE BALANCE) */
+/* 🔥 FIXED GRID (NO OVERLAP) */
 .food-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
+  gap: 8px;
+
+  align-items: start;      /* prevents stretching issues */
+  grid-auto-rows: auto;    /* stabilizes row height */
 }
 
 /* DESKTOP */
 @media (min-width: 768px) {
+  .home-page {
+    padding: 10px;
+  }
+
   .food-grid {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
+    gap: 12px;
   }
 }
 
-/* SMALL MOBILE FIX */
+/* MOBILE FIX */
 @media (max-width: 480px) {
-  .menu-tabs {
-    gap: 6px;
-  }
-
-  .menu-tabs button {
-    padding: 8px 10px;
-    font-size: 12px;
-  }
-
   .food-grid {
-    gap: 8px;
+    gap: 6px;
   }
 }
 
@@ -108,82 +115,4 @@
   background: #0b0b0f;
   color: white;
   border-radius: 14px;
-}
-
-.catering-hero {
-  text-align: center;
-}
-
-.catering-hero p {
-  font-size: 13px;
-  opacity: 0.8;
-}
-
-.catering-value {
-  text-align: center;
-  font-size: 12px;
-  margin: 10px 0;
-}
-
-.catering-services {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
-}
-
-.service-card {
-  background: #15151b;
-  padding: 12px;
-  border-radius: 10px;
-}
-
-.service-card .icon {
-  font-size: 18px;
-}
-
-.pricing-title {
-  text-align: center;
-  margin: 15px 0 10px;
-}
-
-.catering-pricing {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
-}
-
-.price-card {
-  background: #15151b;
-  padding: 12px;
-  border-radius: 10px;
-  text-align: center;
-}
-
-.price-card h3 {
-  color: orange;
-}
-
-.price-card.featured {
-  border: 1px solid orange;
-}
-
-.catering-cta {
-  margin-top: 15px;
-  width: 100%;
-  padding: 12px;
-  background: orange;
-  border: none;
-  border-radius: 10px;
-  font-weight: bold;
-}
-
-/* DESKTOP CATERING */
-@media (min-width: 768px) {
-  .catering-services {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .catering-pricing {
-    grid-template-columns: repeat(3, 1fr);
-  }
 }
