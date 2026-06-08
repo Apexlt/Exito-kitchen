@@ -84,6 +84,7 @@ html, body {
   gap: 8px;
   align-items: stretch;
   width: 100%;
+  padding-right: 45px;
 }
 
 /* ONLY ultra-small phones go single column */
