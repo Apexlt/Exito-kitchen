@@ -228,85 +228,90 @@ html, body {
 }
 
 /* =========================
-   MOBILE COMPACT MODE (FIX)
+   MOBILE COMPACT MODE (FINAL FIX)
 ========================= */
 
 @media (max-width: 480px) {
 
   .catering-alt {
-    margin-top: 10px;
+    margin-top: 8px;
   }
 
   .catering-banner {
-    height: 110px;
-    border-radius: 14px;
-  }
-
-  .catering-banner .overlay {
-    padding: 10px;
-  }
-
-  .catering-banner h2 {
-    font-size: 14px;
-  }
-
-  .catering-banner p {
-    font-size: 10px;
-  }
-
-  .catering-stats {
-    margin: 8px 0;
-  }
-
-  .catering-stats strong {
-    font-size: 13px;
-  }
-
-  .catering-stats span {
-    font-size: 9px;
-  }
-
-  .scroll-card {
-    padding: 10px;
+    height: 90px;
     border-radius: 12px;
   }
 
-  .scroll-card h3 {
-    font-size: 12px;
-  }
-
-  .scroll-card p {
-    font-size: 10px;
-    margin: 5px 0;
-  }
-
-  .scroll-card button {
-    padding: 6px;
-    font-size: 10px;
-    border-radius: 16px;
-  }
-
-  .catering-alt-pricing {
-    gap: 6px;
-    margin-top: 12px;
-  }
-
-  .alt-price {
+  .catering-banner .overlay {
     padding: 8px;
   }
 
-  .alt-price h2 {
-    font-size: 12px;
+  .catering-banner h2 {
+    font-size: 13px;
   }
 
-  .alt-price p {
+  .catering-banner p {
     font-size: 9px;
   }
 
-  .alt-cta {
-    margin-top: 12px;
-    padding: 9px;
+  .catering-stats {
+    margin: 6px 0;
+  }
+
+  .catering-stats strong {
     font-size: 12px;
-    border-radius: 24px;
+  }
+
+  .catering-stats span {
+    font-size: 8px;
+  }
+
+  .catering-scroll {
+    gap: 6px;
+  }
+
+  .scroll-card {
+    padding: 8px;
+    border-radius: 10px;
+    min-height: 110px;
+  }
+
+  .scroll-card h3 {
+    font-size: 11px;
+  }
+
+  .scroll-card p {
+    font-size: 9px;
+    margin: 4px 0;
+  }
+
+  .scroll-card button {
+    padding: 5px;
+    font-size: 9px;
+    border-radius: 12px;
+  }
+
+  .catering-alt-pricing {
+    margin-top: 8px;
+    gap: 5px;
+  }
+
+  .alt-price {
+    padding: 7px;
+  }
+
+  .alt-price h2 {
+    font-size: 11px;
+  }
+
+  .alt-price p {
+    font-size: 8px;
+  }
+
+  .alt-cta {
+    margin-top: 10px;
+    padding: 8px;
+    font-size: 11px;
+    border-radius: 20px;
   }
 }
