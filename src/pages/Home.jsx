@@ -23,7 +23,6 @@ function Home() {
 
   return (
     <div className="home-page">
-      <h1>Welcome to Exito Kitchen 🍽️</h1>
 
       {/* INFO BANNER */}
       <div className="info-banner">
